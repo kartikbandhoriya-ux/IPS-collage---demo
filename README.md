@@ -1,12 +1,18 @@
 # IPS-collage---demo
-This is my first get repository.
-<br>
-author - kartik bandhoriya 
+Kartik-Portfolio
+│
+├── index.html
+│
+└── profile.jpg
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Kartik Bandhoriya - B.Tech CSIT student at IPS Academy and aspiring web developer.">
 
     <title>Kartik Bandhoriya | Portfolio</title>
 
@@ -18,34 +24,88 @@ author - kartik bandhoriya
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
+        :root {
+            --bg: #050505;
+            --bg2: #0b0f10;
+            --card: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.10);
+            --text: #ffffff;
+            --muted: #a5a5a5;
+            --accent: #00e5ff;
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 229, 255, 0.08);
+            filter: blur(100px);
+            border-radius: 50%;
+            top: 10%;
+            right: -150px;
+            z-index: -1;
+            animation: glow 7s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 100, 255, 0.06);
+            filter: blur(100px);
+            border-radius: 50%;
+            bottom: 0;
+            left: -150px;
+            z-index: -1;
+        }
+
+        @keyframes glow {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(80px);
+            }
+        }
+
+        /* NAVBAR */
 
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10,10,10,0.85);
-            backdrop-filter: blur(10px);
+
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            border-bottom: 1px solid #222;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .logo span {
-            color: #00e5ff;
+            color: var(--accent);
         }
 
         nav ul {
@@ -54,246 +114,576 @@ author - kartik bandhoriya
             list-style: none;
         }
 
-        nav a {
-            color: #fff;
+        nav ul li a {
+            color: #ddd;
             text-decoration: none;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #00e5ff;
+        nav ul li a:hover {
+            color: var(--accent);
         }
+
+        /* GENERAL */
 
         section {
-            padding: 100px 8%;
             min-height: 100vh;
+            padding: 110px 8%;
         }
 
+        .section-title {
+            font-size: clamp(35px, 5vw, 55px);
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* HERO */
+
         .hero {
+            min-height: 100vh;
+
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 70px;
+
             background:
-                radial-gradient(circle at 80% 30%, #003b45 0%, transparent 30%),
-                #0a0a0a;
+                radial-gradient(circle at 80% 40%,
+                    rgba(0, 229, 255, 0.10),
+                    transparent 30%);
+
+            padding-top: 130px;
+        }
+
+        .hero-content {
+            max-width: 650px;
         }
 
         .hero small {
-            color: #00e5ff;
-            font-size: 16px;
-            margin-bottom: 10px;
+            color: var(--accent);
+            font-size: 15px;
+            letter-spacing: 4px;
+            font-weight: bold;
         }
 
         .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
-            line-height: 1;
-            margin-bottom: 20px;
+            font-size: clamp(50px, 8vw, 90px);
+            line-height: 0.95;
+            margin: 18px 0 25px;
+            letter-spacing: -3px;
         }
 
         .hero h1 span {
-            color: #00e5ff;
+            color: var(--accent);
         }
 
         .hero p {
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.8;
             max-width: 600px;
-            color: #aaa;
-            font-size: 19px;
             margin-bottom: 30px;
+        }
+
+        /* PROFILE IMAGE */
+
+        .profile-image {
+            width: 350px;
+            height: 470px;
+
+            border-radius: 25px;
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 0 70px rgba(0, 229, 255, 0.10);
+
+            transform: rotate(2deg);
+
+            transition: 0.5s;
+        }
+
+        .profile-image:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow:
+                0 0 90px rgba(0, 229, 255, 0.18);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BUTTONS */
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 13px 25px;
-            background: #00e5ff;
+            padding: 14px 25px;
+
+            background: var(--accent);
             color: #000;
+
             text-decoration: none;
             border-radius: 30px;
+
             font-weight: bold;
+            font-size: 14px;
+
             transition: 0.3s;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,229,255,0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
         }
 
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 40px;
+        .btn.outline {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
         }
 
-        .section-title span {
-            color: #00e5ff;
+        .btn.outline:hover {
+            background: var(--accent);
+            color: #000;
         }
+
+        /* ABOUT */
 
         .about {
-            background: #0e0e0e;
+            background: rgba(255, 255, 255, 0.015);
         }
 
         .about-box {
-            max-width: 800px;
-            padding: 35px;
-            border: 1px solid #252525;
-            border-radius: 20px;
-            background: #111;
+            max-width: 900px;
+
+            padding: 40px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(10px);
         }
 
         .about-box p {
-            color: #bbb;
-            font-size: 18px;
+            color: #bdbdbd;
+            font-size: 17px;
+            line-height: 1.9;
         }
+
+        /* INFO CARDS */
 
         .info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
 
         .info-card {
             padding: 25px;
-            background: #151515;
-            border: 1px solid #252525;
-            border-radius: 15px;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .info-card h3 {
-            color: #00e5ff;
+            color: var(--accent);
             margin-bottom: 8px;
+            font-size: 15px;
         }
 
-        .skills {
-            background: #0a0a0a;
+        .info-card p {
+            color: white;
+            font-size: 15px;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         .skill-card {
-            width: 250px;
             padding: 30px;
-            border-radius: 18px;
-            background: #111;
-            border: 1px solid #252525;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
             transition: 0.3s;
         }
 
         .skill-card:hover {
             transform: translateY(-8px);
-            border-color: #00e5ff;
+            border-color: var(--accent);
+        }
+
+        .skill-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(0, 229, 255, 0.10);
+
+            border-radius: 15px;
+
+            color: var(--accent);
+
+            font-size: 25px;
+            font-weight: bold;
+
+            margin-bottom: 20px;
         }
 
         .skill-card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .skill-card p {
-            color: #999;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
         }
 
+        /* EDUCATION */
+
         .education {
-            background: #0e0e0e;
+            background: rgba(255, 255, 255, 0.015);
         }
 
         .education-card {
-            max-width: 700px;
-            padding: 30px;
-            background: #111;
-            border-left: 4px solid #00e5ff;
-            border-radius: 12px;
+            max-width: 800px;
+
+            padding: 35px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+
+            border-radius: 20px;
         }
 
         .education-card h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .education-card .college {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
         .education-card p {
-            color: #aaa;
+            color: var(--muted);
+            margin-top: 5px;
         }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            background: rgba(0, 229, 255, 0.10);
+
+            color: var(--accent);
+
+            border-radius: 20px;
+
+            font-size: 12px;
+        }
+
+        /* CONTACT */
 
         .contact {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .contact p {
-            color: #aaa;
-            margin-bottom: 25px;
+            color: var(--muted);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            padding: 15px 20px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            color: #ddd;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
 
         footer {
+            padding: 30px 8%;
+
             text-align: center;
-            padding: 25px;
-            background: #050505;
+
+            background: #020202;
+
+            border-top: 1px solid var(--border);
+
             color: #777;
-            border-top: 1px solid #222;
+
+            font-size: 14px;
         }
 
-        @media (max-width: 700px) {
+        footer span {
+            color: var(--accent);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
             nav {
-                padding: 15px 5%;
+                padding: 16px 5%;
             }
 
             nav ul {
                 gap: 12px;
-                font-size: 13px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
             }
 
             section {
                 padding: 90px 6%;
             }
 
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                padding-top: 120px;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .hero h1 {
-                font-size: 52px;
+                letter-spacing: -2px;
+            }
+
+            .profile-image {
+                width: 280px;
+                height: 370px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .profile-image {
+                width: 240px;
+                height: 320px;
+            }
+
+            .about-box {
+                padding: 25px;
             }
 
             .section-title {
-                font-size: 34px;
-            }
-
-            .skill-card {
-                width: 100%;
+                font-size: 36px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
+
     <nav>
-        <div class="logo">Kartik<span>.</span></div>
+
+        <div class="logo">
+            Kartik<span>.</span>
+        </div>
 
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
     </nav>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
+
     <section class="hero" id="home">
 
-        <small>HELLO, I'M</small>
+        <div class="hero-content">
 
-        <h1>
-            Kartik<br>
-            <span>Bandhoriya</span>
-        </h1>
+            <small>HELLO, I'M</small>
 
-        <p>
-            B.Tech CSIT student at IPS Academy,
-            currently in my second year and interested
-            in learning web development and technology.
-        </p>
+            <h1>
+                Kartik<br>
+                <span>Bandhoriya</span>
+            </h1>
 
-        <a href="#about" class="btn">Explore My Portfolio</a>
+            <p>
+                B.Tech CSIT student at IPS Academy, currently in my
+                second year and interested in web development,
+                technology and continuous learning.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#about" class="btn">
+                    Explore My Portfolio
+                </a>
+
+                <a href="#contact" class="btn outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- YOUR PHOTO -->
+
+        <div class="profile-image">
+
+            <img
+                src="profile.jpg"
+                alt="Kartik Bandhoriya">
+
+        </div>
 
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- ================= ABOUT ================= -->
+
     <section class="about" id="about">
 
         <h2 class="section-title">
@@ -303,30 +693,50 @@ author - kartik bandhoriya
         <div class="about-box">
 
             <p>
-                I am Kartik Bandhoriya, a second-year
-                B.Tech CSIT student at IPS Academy.
-                I am currently developing my technical
-                skills and exploring web development.
-                My current skill is HTML, and I am
-                continuously learning new technologies
-                to improve my development abilities.
+                I am Kartik Bandhoriya, a second-year B.Tech CSIT
+                student at IPS Academy. I am interested in technology
+                and web development and currently building my
+                foundation in HTML.
+                <br><br>
+                I enjoy learning through practical projects and
+                improving my technical skills step by step.
+                My goal is to build strong development skills,
+                work on real-world projects and grow as a developer.
             </p>
+
 
             <div class="info">
 
                 <div class="info-card">
-                    <h3>Course</h3>
-                    <p>B.Tech CSIT</p>
+
+                    <h3>COURSE</h3>
+
+                    <p>
+                        B.Tech CSIT
+                    </p>
+
                 </div>
 
-                <div class="info-card">
-                    <h3>Year</h3>
-                    <p>Second Year</p>
-                </div>
 
                 <div class="info-card">
-                    <h3>College</h3>
-                    <p>IPS Academy</p>
+
+                    <h3>YEAR</h3>
+
+                    <p>
+                        Second Year
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>COLLEGE</h3>
+
+                    <p>
+                        IPS Academy
+                    </p>
+
                 </div>
 
             </div>
@@ -336,373 +746,48 @@ author - kartik bandhoriya
     </section>
 
 
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills">
 
         <h2 class="section-title">
             My <span>Skills</span>
         </h2>
 
-        <div class="skill-card">
 
-            <h3>HTML</h3>
+        <div class="skills-grid">
 
-            <p>
-                Creating structured and responsive
-                web pages using HTML.
-            </p>
+            <div class="skill-card">
 
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section class="education" id="education">
-
-        <h2 class="section-title">
-            <span>Education</span>
-        </h2>
-
-        <div class="education-card">
-
-            <h3>B.Tech CSIT</h3>
-
-            <p>IPS Academy</p>
-
-            <p>Currently studying in Second Year</p>
-
-        </div>
-
-    </section>
-
-
-    <!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kartik Bandhoriya | Portfolio</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10,10,10,0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #00e5ff;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #00e5ff;
-        }
-
-        section {
-            padding: 100px 8%;
-            min-height: 100vh;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            background:
-                radial-gradient(circle at 80% 30%, #003b45 0%, transparent 30%),
-                #0a0a0a;
-        }
-
-        .hero small {
-            color: #00e5ff;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #00e5ff;
-        }
-
-        .hero p {
-            max-width: 600px;
-            color: #aaa;
-            font-size: 19px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            background: #00e5ff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,229,255,0.25);
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 40px;
-        }
-
-        .section-title span {
-            color: #00e5ff;
-        }
-
-        .about {
-            background: #0e0e0e;
-        }
-
-        .about-box {
-            max-width: 800px;
-            padding: 35px;
-            border: 1px solid #252525;
-            border-radius: 20px;
-            background: #111;
-        }
-
-        .about-box p {
-            color: #bbb;
-            font-size: 18px;
-        }
-
-        .info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .info-card {
-            padding: 25px;
-            background: #151515;
-            border: 1px solid #252525;
-            border-radius: 15px;
-        }
-
-        .info-card h3 {
-            color: #00e5ff;
-            margin-bottom: 8px;
-        }
-
-        .skills {
-            background: #0a0a0a;
-        }
-
-        .skill-card {
-            width: 250px;
-            padding: 30px;
-            border-radius: 18px;
-            background: #111;
-            border: 1px solid #252525;
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: #00e5ff;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .skill-card p {
-            color: #999;
-        }
-
-        .education {
-            background: #0e0e0e;
-        }
-
-        .education-card {
-            max-width: 700px;
-            padding: 30px;
-            background: #111;
-            border-left: 4px solid #00e5ff;
-            border-radius: 12px;
-        }
-
-        .education-card h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .education-card p {
-            color: #aaa;
-        }
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact p {
-            color: #aaa;
-            margin-bottom: 25px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #050505;
-            color: #777;
-            border-top: 1px solid #222;
-        }
-
-        @media (max-width: 700px) {
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                gap: 12px;
-                font-size: 13px;
-            }
-
-            section {
-                padding: 90px 6%;
-            }
-
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .section-title {
-                font-size: 34px;
-            }
-
-            .skill-card {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">Kartik<span>.</span></div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-
-        <small>HELLO, I'M</small>
-
-        <h1>
-            Kartik<br>
-            <span>Bandhoriya</span>
-        </h1>
-
-        <p>
-            B.Tech CSIT student at IPS Academy,
-            currently in my second year and interested
-            in learning web development and technology.
-        </p>
-
-        <a href="#about" class="btn">Explore My Portfolio</a>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-
-        <h2 class="section-title">
-            About <span>Me</span>
-        </h2>
-
-        <div class="about-box">
-
-            <p>
-                I am Kartik Bandhoriya, a second-year
-                B.Tech CSIT student at IPS Academy.
-                I am currently developing my technical
-                skills and exploring web development.
-                My current skill is HTML, and I am
-                continuously learning new technologies
-                to improve my development abilities.
-            </p>
-
-            <div class="info">
-
-                <div class="info-card">
-                    <h3>Course</h3>
-                    <p>B.Tech CSIT</p>
+                <div class="skill-icon">
+                    HTML
                 </div>
 
-                <div class="info-card">
-                    <h3>Year</h3>
-                    <p>Second Year</p>
+                <h3>HTML</h3>
+
+                <p>
+                    Creating structured web pages and
+                    building the foundation of websites
+                    using HTML.
+                </p>
+
+            </div>
+
+
+            <!-- Future skill -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    +
                 </div>
 
-                <div class="info-card">
-                    <h3>College</h3>
-                    <p>IPS Academy</p>
-                </div>
+                <h3>Currently Learning</h3>
+
+                <p>
+                    Continuously learning new technologies
+                    and improving my web development skills.
+                </p>
 
             </div>
 
@@ -711,449 +796,103 @@ author - kartik bandhoriya
     </section>
 
 
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
+    <!-- ================= EDUCATION ================= -->
 
-        <h2 class="section-title">
-            My <span>Skills</span>
-        </h2>
-
-        <div class="skill-card">
-
-            <h3>HTML</h3>
-
-            <p>
-                Creating structured and responsive
-                web pages using HTML.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION -->
     <section class="education" id="education">
 
         <h2 class="section-title">
-            <span>Education</span>
+            My <span>Education</span>
         </h2>
+
 
         <div class="education-card">
 
-            <h3>B.Tech CSIT</h3>
+            <h3>
+                Bachelor of Technology
+            </h3>
 
-            <p>IPS Academy</p>
+            <div class="college">
+                Computer Science & Information Technology
+            </div>
 
-            <p>Currently studying in Second Year</p>
+            <p>
+                <strong>IPS Academy, Indore</strong>
+            </p>
+
+            <p>
+                2025 - Present
+            </p>
+
+            <p>
+                Currently studying in Second Year
+            </p>
 
         </div>
 
     </section>
 
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects">
 
         <h2 class="section-title">
-            Let's <span>Connect</span>
+            My <span>Projects</span>
         </h2>
 
-        <p>
-            Interested in technology, web development
-            and learning new skills.
-        </p>
 
-        <a href="mailto:your@email.com" class="btn">
-            Contact Me
-        </a>
+        <div class="projects-grid">
 
-    </section>
 
+            <!-- PROJECT 1 -->
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Kartik Bandhoriya. All Rights Reserved.
-    </footer>
+            <div class="project-card">
 
+                <h3>
+                    Personal Portfolio Website
+                </h3>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <p>
+                    A responsive personal portfolio website
+                    created to showcase my education, skills,
+                    projects and contact information.
+                </p>
 
-    <title>Kartik Bandhoriya | Portfolio</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10,10,10,0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #00e5ff;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #00e5ff;
-        }
-
-        section {
-            padding: 100px 8%;
-            min-height: 100vh;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            background:
-                radial-gradient(circle at 80% 30%, #003b45 0%, transparent 30%),
-                #0a0a0a;
-        }
-
-        .hero small {
-            color: #00e5ff;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #00e5ff;
-        }
-
-        .hero p {
-            max-width: 600px;
-            color: #aaa;
-            font-size: 19px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            background: #00e5ff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,229,255,0.25);
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 40px;
-        }
-
-        .section-title span {
-            color: #00e5ff;
-        }
-
-        .about {
-            background: #0e0e0e;
-        }
-
-        .about-box {
-            max-width: 800px;
-            padding: 35px;
-            border: 1px solid #252525;
-            border-radius: 20px;
-            background: #111;
-        }
-
-        .about-box p {
-            color: #bbb;
-            font-size: 18px;
-        }
-
-        .info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .info-card {
-            padding: 25px;
-            background: #151515;
-            border: 1px solid #252525;
-            border-radius: 15px;
-        }
-
-        .info-card h3 {
-            color: #00e5ff;
-            margin-bottom: 8px;
-        }
-
-        .skills {
-            background: #0a0a0a;
-        }
-
-        .skill-card {
-            width: 250px;
-            padding: 30px;
-            border-radius: 18px;
-            background: #111;
-            border: 1px solid #252525;
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: #00e5ff;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .skill-card p {
-            color: #999;
-        }
-
-        .education {
-            background: #0e0e0e;
-        }
-
-        .education-card {
-            max-width: 700px;
-            padding: 30px;
-            background: #111;
-            border-left: 4px solid #00e5ff;
-            border-radius: 12px;
-        }
-
-        .education-card h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .education-card p {
-            color: #aaa;
-        }
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact p {
-            color: #aaa;
-            margin-bottom: 25px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #050505;
-            color: #777;
-            border-top: 1px solid #222;
-        }
-
-        @media (max-width: 700px) {
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                gap: 12px;
-                font-size: 13px;
-            }
-
-            section {
-                padding: 90px 6%;
-            }
-
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .section-title {
-                font-size: 34px;
-            }
-
-            .skill-card {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">Kartik<span>.</span></div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-
-        <small>HELLO, I'M</small>
-
-        <h1>
-            Kartik<br>
-            <span>Bandhoriya</span>
-        </h1>
-
-        <p>
-            B.Tech CSIT student at IPS Academy,
-            currently in my second year and interested
-            in learning web development and technology.
-        </p>
-
-        <a href="#about" class="btn">Explore My Portfolio</a>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-
-        <h2 class="section-title">
-            About <span>Me</span>
-        </h2>
-
-        <div class="about-box">
-
-            <p>
-                I am Kartik Bandhoriya, a second-year
-                B.Tech CSIT student at IPS Academy.
-                I am currently developing my technical
-                skills and exploring web development.
-                My current skill is HTML, and I am
-                continuously learning new technologies
-                to improve my development abilities.
-            </p>
-
-            <div class="info">
-
-                <div class="info-card">
-                    <h3>Course</h3>
-                    <p>B.Tech CSIT</p>
-                </div>
-
-                <div class="info-card">
-                    <h3>Year</h3>
-                    <p>Second Year</p>
-                </div>
-
-                <div class="info-card">
-                    <h3>College</h3>
-                    <p>IPS Academy</p>
-                </div>
+                <span class="project-tag">
+                    HTML
+                </span>
 
             </div>
 
-        </div>
 
-    </section>
+            <!-- PROJECT 2 -->
 
+            <div class="project-card">
 
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
+                <h3>
+                    More Projects Coming
+                </h3>
 
-        <h2 class="section-title">
-            My <span>Skills</span>
-        </h2>
+                <p>
+                    I am currently learning and working on
+                    new projects. More practical projects
+                    will be added here as I build them.
+                </p>
 
-        <div class="skill-card">
+                <span class="project-tag">
+                    Learning
+                </span>
 
-            <h3>HTML</h3>
+            </div>
 
-            <p>
-                Creating structured and responsive
-                web pages using HTML.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section class="education" id="education">
-
-        <h2 class="section-title">
-            <span>Education</span>
-        </h2>
-
-        <div class="education-card">
-
-            <h3>B.Tech CSIT</h3>
-
-            <p>IPS Academy</p>
-
-            <p>Currently studying in Second Year</p>
 
         </div>
 
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- ================= CONTACT ================= -->
+
     <section class="contact" id="contact">
 
         <h2 class="section-title">
@@ -1161,48 +900,63 @@ author - kartik bandhoriya
         </h2>
 
         <p>
-            Interested in technology, web development
-            and learning new skills.
+            Interested in technology, web development and
+            learning new skills? Feel free to connect with me.
         </p>
 
-        <a href="mailto:your@email.com" class="btn">
-            Contact Me
+
+        <div class="contact-info">
+
+
+            <!-- PHONE -->
+
+            <a
+                class="contact-item"
+                href="tel:6264750934">
+
+                📱 6264750934
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+                class="contact-item"
+                href="mailto:kartikbandhoriya@gmail.com">
+
+                📧 kartikbandhoriya@gmail.com
+
+            </a>
+
+
+        </div>
+
+
+        <!-- EMAIL BUTTON -->
+
+        <a
+            href="mailto:kartikbandhoriya@gmail.com"
+            class="btn">
+
+            Send Me an Email
+
         </a>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
-        © 2026 Kartik Bandhoriya. All Rights Reserved.
+
+        © 2026
+        <span>Kartik Bandhoriya</span>.
+        All Rights Reserved.
+
     </footer>
 
 
 </body>
-</html> CONTACT -->
-    <section class="contact" id="contact">
 
-        <h2 class="section-title">
-            Let's <span>Connect</span>
-        </h2>
-
-        <p>
-            Interested in technology, web development
-            and learning new skills.
-        </p>
-
-        <a href="mailto:your@email.com" class="btn">
-            Contact Me
-        </a>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Kartik Bandhoriya. All Rights Reserved.
-    </footer>
-
-
-</body>
 </html>
